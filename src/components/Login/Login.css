@@ -1,0 +1,40 @@
+.card__container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 400px;
+  width: 350px;
+  padding: 20px;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.input {
+  width: 70%;
+  height: 30px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.input:focus {
+  outline: none;
+  transition: scale(1.08);
+}
+
+.btn {
+  width: 40%;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.logo {
+  height: 50px;
+}

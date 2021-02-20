@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
+  margin-top: 60px;
+}
+
+.repo {
+  border-top: 1px solid #d9d9d9;
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.description > h2 {
+  color: #6666ff;
+  font-weight: 600;
+  font-size: 20px;
+  transition: all 2s linear;
+}
+
+.description > h2:hover {
+  text-decoration: underline;
+}
+
+.star__btn {
+  position: relative;
+  width: 5rem;
+  height: 10px;
+}
+
+.star__btn > button {
+  display: flex;
+  align-items: center;
+  transition: all 1s ease-in-out;
+  justify-content: space-evenly;
+}
+
+.star__btn > button:hover {
+  background-color: #d9d9d9;
+}
