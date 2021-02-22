@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
 import GradeOutlinedIcon from "@material-ui/icons/GradeOutlined";
-import axios from "axios";
 import "./Repos.css";
 
-function Repos({userName}) {
-  const [repos, setRepos] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`https://api.github.com/users/${userName}/repos`)
-      .then((response) => setRepos(response.data));
-  }, []);
-
+function Repos({repos}) {
+ 
   console.log(repos);
   return (
     <div className="wrapper">

@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./Sidebar.css";
 import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined";
 import GradeOutlinedIcon from "@material-ui/icons/GradeOutlined";
 
-function Sidebar({userName}) {
-  const [userInfo, setUserInfo] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(`https://api.github.com/users/${userName}`)
-      .then((response) => setUserInfo(response.data));
-  }, []);
+function Sidebar({userInfo}) {
   console.log(userInfo);
   return (
     <div className="container">
@@ -20,8 +11,8 @@ function Sidebar({userName}) {
         src={userInfo.avatar_url}
         alt={userInfo.login}
       />
-      <h1>{userInfo.login}</h1>
-      <h3>{userInfo.name}</h3>
+      <h1>{userInfo.name}</h1>
+      <h3>{userInfo.login}</h3>
       <p className="bio">{userInfo.bio}</p>
       <button>Edit profile</button>
       <div className="additional__information">

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "./Login.css";
 import Logo from "E:/React/github-clone/src/assets/logo.svg";
 
-function Login({userName, setUserName}) {
+function Login({setUserName}) {
     let name;
     const handleChange = (e) => {
         name = e.target.value
