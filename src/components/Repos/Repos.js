@@ -3,8 +3,6 @@ import GradeOutlinedIcon from "@material-ui/icons/GradeOutlined";
 import "./Repos.css";
 
 function Repos({repos}) {
- 
-  console.log(repos);
   return (
     <div className="wrapper">
       {repos.map((repo) => (

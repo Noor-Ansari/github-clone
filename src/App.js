@@ -7,7 +7,7 @@ function App() {
   const [userName, setUserName] = useState("");
 
   if(userName){
-    document.title = userName;
+    document.title = `Github/${userName}`;
   } 
 
   return (

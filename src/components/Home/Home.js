@@ -7,11 +7,11 @@ import Overview from "../Overview/Overview";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 
-
 function Home({ userName }) {
   const [repos, setRepos] = useState([]);
   const [userInfo, setUserInfo] = useState("");
   const [page, setPage] = useState("OVERVIEW");
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(async () => {
     await axios
@@ -26,14 +26,18 @@ function Home({ userName }) {
   }, []);
 
   return (
-      <div>
-        <Navbar userInfo={userInfo} />
-        <Header userInfo={userInfo} page= {page} setPage={setPage} />
-        <div className="body">
-          <Sidebar userInfo={userInfo} />
-          {page==="OVERVIEW" ? <Overview repos={repos} />  : <Repos repos={repos} />}
-        </div>
+    <div className={darkMode ? "dark" : "light"}>
+      <Navbar userInfo={userInfo} />
+      <Header userInfo={userInfo} page={page} setPage={setPage} darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div className="body">
+        <Sidebar userInfo={userInfo} />
+        {page === "OVERVIEW" ? (
+          <Overview repos={repos} />
+        ) : (
+          <Repos repos={repos} />
+        )}
       </div>
+    </div>
   );
 }
 

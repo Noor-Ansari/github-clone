@@ -8,16 +8,21 @@ import Switch from '@material-ui/core/Switch';
 import {Link} from "react-router-dom";
 
 
-function Header({userInfo, page, setPage}) {
+function Header({userInfo, page, setPage, darkMode, setDarkMode}) {
+    
+    const handleChange = () => {
+        setDarkMode(!darkMode);
+    }
+
     return (
         <div className="header__container">
             <ul className="menus">
-                <li onClick={()=>setPage("OVERVIEW")}><ImportContactsOutlinedIcon/>  <p>Overview</p></li>
-                <li onClick={()=>setPage("REPOS")}><SaveRoundedIcon/> <p> Repositories</p><span className="badge">{userInfo.public_repos}</span></li>
+                <li className={page==="OVERVIEW" && "active"} onClick={()=>setPage("OVERVIEW")}><ImportContactsOutlinedIcon/>  <p>Overview</p></li>
+                <li className={page==="REPOS" && "active"} onClick={()=>setPage("REPOS")}><SaveRoundedIcon/> <p> Repositories</p><span className="badge">{userInfo.public_repos}</span></li>
                 <li><ListAltOutlinedIcon/> <p> Projects</p></li>
                 <li><OpenInBrowserIcon/> <p> Packages</p></li>
             </ul>
-            <Switch className="switch" />
+            <Switch onChange={handleChange} value={darkMode}/>
         </div>
     )
 }

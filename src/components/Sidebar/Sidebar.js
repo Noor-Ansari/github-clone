@@ -3,7 +3,6 @@ import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined";
 import GradeOutlinedIcon from "@material-ui/icons/GradeOutlined";
 
 function Sidebar({userInfo}) {
-  console.log(userInfo);
   return (
     <div className="container">
       <img
