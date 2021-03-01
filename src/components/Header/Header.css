@@ -16,24 +16,24 @@
   font-weight: 400;
 }
 
-
-
-.menus > li {
-  padding: 20px 12px;
+.menu__items {
+  padding: 20px;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: #000;
 }
 
-.menus > li > *.MuiSvgIcon-root {
+.menu__items > *.MuiSvgIcon-root {
   color: gray;
   height: 20px;
 }
 
-.menus > li > p {
+.menu__items > p {
   padding: 0px 10px;
 }
 
-.menus > li:hover {
+.menu__items:hover {
   border-bottom: 2px solid #e1e4e8;
   cursor: pointer;
 }
@@ -46,6 +46,6 @@
   font-weight: 600;
 }
 
-.active {
+#active {
   border-bottom: 2px solid #42b138;
 }

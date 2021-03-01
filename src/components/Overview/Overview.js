@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./Overview.css";
 import SaveRoundedIcon from "@material-ui/icons/SaveRounded";
 import DragIndicatorTwoToneIcon from "@material-ui/icons/DragIndicatorTwoTone";
+import { useDataLayerValues } from "../../DataLayer";
 
-function Overview({ repos }) {
+function Overview() {
+  const [{ userRepos }, dispatch] = useDataLayerValues();
   const [pinnedRepos, setPinnedRepos] = useState([]);
 
   useEffect(() => {
     // randomly select 6 repos among all
-    const shuffled = repos.sort(() => 0.5 - Math.random());
+    const shuffled = userRepos.sort(() => 0.5 - Math.random());
     setPinnedRepos(shuffled.slice(0, 6));
-  }, [repos]);
+  }, [userRepos]);
 
   return (
     <div className="overview__container">

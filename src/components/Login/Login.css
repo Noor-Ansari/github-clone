@@ -17,6 +17,13 @@
   justify-items: center;
 }
 
+.login__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .input {
   width: 70%;
   height: 40px;

@@ -6,37 +6,47 @@ import axios from "axios";
 import Overview from "../Overview/Overview";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
+import {useDataLayerValues} from "../../DataLayer";
+import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 
-function Home({ userName }) {
-  const [repos, setRepos] = useState([]);
-  const [userInfo, setUserInfo] = useState("");
-  const [page, setPage] = useState("OVERVIEW");
-  const [darkMode, setDarkMode] = useState(false);
-
+function Home() {
+  const [{userName, darkMode}, dispatch] = useDataLayerValues();
+ 
   useEffect(async () => {
     await axios
       .get(`https://api.github.com/users/${userName}`)
-      .then((response) => setUserInfo(response.data));
-  }, []);
+      .then((response) => {
+        dispatch({
+          type : "SET_USER_INFO",
+          userInfo : response.data
+        })
+      });
+  }, [userName]);
 
   useEffect(async () => {
     await axios
       .get(`https://api.github.com/users/${userName}/repos`)
-      .then((response) => setRepos(response.data));
-  }, []);
+      .then((response) => {
+        dispatch({
+          type : "SET_USER_REPOS",
+          userRepos : response.data
+        })
+      });
+  }, [userName]);
 
   return (
     <div className={darkMode ? "dark" : "light"}>
-      <Navbar userInfo={userInfo} />
-      <Header userInfo={userInfo} page={page} setPage={setPage} darkMode={darkMode} setDarkMode={setDarkMode} />
-      <div className="body">
-        <Sidebar userInfo={userInfo} />
-        {page === "OVERVIEW" ? (
-          <Overview repos={repos} />
-        ) : (
-          <Repos repos={repos} />
-        )}
-      </div>
+      <Router>
+        <Navbar/>
+        <Header/>
+        <div className="body">
+          <Sidebar/>
+          <Switch>
+            <Route path = {"/" && "/overview"}><Overview/></Route>
+            <Route path = "/repos"><Repos/></Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }

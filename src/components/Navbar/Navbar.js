@@ -4,15 +4,20 @@ import "./Navbar.css";
 import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import ArrowDropDownOutlinedIcon from "@material-ui/icons/ArrowDropDownOutlined";
+import { useDataLayerValues } from "../../DataLayer";
 
-function Navbar({ userInfo }) {
-    console.log("Navbar")
-    console.log(userInfo)
+function Navbar() {
+  const [{ userInfo }] = useDataLayerValues();
+  
   return (
     <div className="navbar__container">
       <div className="navbar__left">
         <img src={Logo} alt="logo" />
-        <input type="text" placeholder="Search or jump to..." className="search__bar" />
+        <input
+          type="text"
+          placeholder="Search or jump to..."
+          className="search__bar"
+        />
         <p>Pull requests</p>
         <p>Issues</p>
         <p>Marketplace</p>
@@ -24,8 +29,8 @@ function Navbar({ userInfo }) {
         <ArrowDropDownOutlinedIcon />
         <img
           className="navbar__avatar"
-          src={userInfo.avatar_url}
-          alt={userInfo.login}
+          src={userInfo?.avatar_url}
+          alt={userInfo?.login}
         />
         <ArrowDropDownOutlinedIcon />
       </div>
